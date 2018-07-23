@@ -9,4 +9,6 @@ install:
 
 # command to run tests
 script:
-  - pipenv run pytest
+  - pipenv run pytest --cov=./amalgama
+after_success:
+  - codecov
