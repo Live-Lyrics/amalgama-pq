@@ -1,2 +1,11 @@
 [run]
+branch = True
 source=amalgama
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+ignore_errors = True
+omit =
+    amalgama/__init__.py

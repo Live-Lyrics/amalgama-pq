@@ -1,5 +1,9 @@
 .idea
+
 /.pytest_cache/
 /amalgama.egg-info/
+
 /examples/
+
 .coverage
+htmlcov/
