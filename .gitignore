@@ -1,5 +1,7 @@
 .idea
 
+amalgama/__pycache__/
+tests/__pycache__/
 /.pytest_cache/
 /amalgama.egg-info/
 

@@ -5,6 +5,9 @@
 Amalgama lyrics Scraping
 
 ## Installation
+```
+$ pip nstall git+https://github.com/andriyor/amalgama-pq.git#egg=amalgama-pq
+```
 
 ### Requirements
 * Python 3.6 and up
@@ -20,12 +23,14 @@ $ python setup.py install
 
 ```
 import requests
+from amalgama import amalgama
+
 artist, song = 'Pink Floyd', 'Time'
-url = get_url(artist, song)
+url = amalgama.get_url(artist, song)
 try:
     response = requests.get(url)
     response.raise_for_status()
-    text = get_first_translate_text(response.text)
+    text = amalgama.get_first_translate_text(response.text)
     print(f'{text}{url}')
 except requests.exceptions.HTTPError:
     print(f'{artist}-{song} not found in amalgama {url}')
