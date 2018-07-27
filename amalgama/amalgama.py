@@ -27,10 +27,10 @@ def get_html(html):
     text = d(".texts.col")
     text('div#quality').remove()
     text('div.noprint').remove()
-    return text
+    return text.html()
 
 
-def get_all_translate_text(html):
+def get_all_translates_lines(html):
     d = pq(html)
     lines = [f"{d('h2.translate').text()}\n\n"]
     for i in d('div.translate'):
@@ -55,9 +55,14 @@ def split_before(iterable, pred):
     yield buf
 
 
-def get_first_translate_text(html):
-    lines = get_all_translate_text(html)
+def get_all_translates(html):
+    lines = get_all_translates_lines(html)
     translations = list(split_before(lines, lambda s: '(перевод' in s))
+    return translations
+
+
+def get_first_translate_text(html):
+    translations = get_all_translates(html)
     return ''.join(translations[0])
 
 

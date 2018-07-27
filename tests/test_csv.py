@@ -4,7 +4,7 @@ import pytest
 
 from amalgama import amalgama
 
-with open("tests/test.csv") as f:
+with open("tests/tests_data/test.csv") as f:
     records = csv.DictReader(f)
     csv_data = [(row['artist'], row['title'], row['url']) for row in records]
 
