@@ -1,5 +1,5 @@
-from amalgama import amalgama
 import pytest
+from amalgama import amalgama
 
 split_before_params = {
     'starts_with_sep': ('xooxoo', [['x', 'o', 'o'], ['x', 'o', 'o']]),

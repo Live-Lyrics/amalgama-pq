@@ -1,6 +1,6 @@
+import json
 import pytest
 from amalgama import amalgama
-import pickle
 
 
 @pytest.fixture
@@ -19,21 +19,15 @@ def test_get_html(html, result_html):
     assert amalgama.get_html(html) == result_html
 
 
-@pytest.fixture
-def load_pickle():
-    def _load_pickle(file_path):
-        with open(file_path, 'rb') as f:
-            return pickle.load(f)
-    return _load_pickle
+def load_json(file_path):
+    with open(file_path, 'rb') as f:
+        return json.load(f)
 
 
-def test_get_all_translates_lines(html, load_pickle):
-    assert amalgama.get_all_translates_lines(html) == load_pickle('tests/tests_data/get_all_translates_lines')
+parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text]
+params = {i.__name__: (i, load_json(f'tests/tests_data/{i.__name__}.json'))for i in parse_functions}
 
 
-def test_get_all_translates(html, load_pickle):
-    assert amalgama.get_all_translates(html) == load_pickle('tests/tests_data/get_all_translates')
-
-
-def test_get_first_translate_text(html, load_pickle):
-    assert amalgama.get_first_translate_text(html) == load_pickle('tests/tests_data/get_first_translate_text')
+@pytest.mark.parametrize('f, data', params.values(), ids=list(params.keys()))
+def test_pq(f, data, html):
+    assert f(html) == data

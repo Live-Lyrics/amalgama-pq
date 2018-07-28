@@ -1,4 +1,4 @@
-import pickle
+import json
 from amalgama import amalgama
 
 
@@ -24,5 +24,5 @@ with open('tests/tests_data/lyrics.html', 'r', encoding='cp1251') as f:
 parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text]
 
 for f in parse_functions:
-    with open(f'tests/tests_data/{f.__name__}', 'wb') as file:
-        pickle.dump(f(html), file)
+    with open(f'tests/tests_data/{f.__name__}.json', 'w', encoding='utf-8') as outfile:
+        json.dump(f(html), outfile, ensure_ascii=False)
