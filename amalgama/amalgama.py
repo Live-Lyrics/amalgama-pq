@@ -1,7 +1,9 @@
+from typing import List, Callable, Iterable, Generator
+
 from pyquery import PyQuery as pq
 
 
-def build_url(s):
+def build_url(s: str) -> str:
     s = s.lower()
     s = s.replace(' ', '_')
     s = s.replace('$', 's')
@@ -13,7 +15,7 @@ def build_url(s):
     return s
 
 
-def get_url(artist, title):
+def get_url(artist: str, title: str) -> str:
     artist, title = map(build_url, [artist, title])
     if 'the' in artist:
         artist = artist[4:]
@@ -21,7 +23,7 @@ def get_url(artist, title):
     return amalgama_url
 
 
-def get_html(html):
+def get_html(html: str) -> str:
     d = pq(html)
     d('script').remove()
     text = d(".texts.col")
@@ -30,7 +32,7 @@ def get_html(html):
     return text.html()
 
 
-def get_all_translates_lines(html):
+def get_all_translates_lines(html: str) -> List[str]:
     d = pq(html)
     lines = [f"{d('h2.translate').text()}\n\n"]
     for i in d('div.translate'):
@@ -45,8 +47,8 @@ def get_all_translates_lines(html):
     return lines
 
 
-def split_before(iterable, pred):
-    buf = []
+def split_before(iterable: Iterable[str], pred: Callable[[str], bool]) -> Iterable[List[str]]:
+    buf: List[str] = []
     for item in iterable:
         if pred(item) and buf:
             yield buf
@@ -55,13 +57,13 @@ def split_before(iterable, pred):
     yield buf
 
 
-def get_all_translates(html):
+def get_all_translates(html: str) -> List[List[str]]:
     lines = get_all_translates_lines(html)
     translations = list(split_before(lines, lambda s: '(перевод' in s))
     return translations
 
 
-def get_first_translate_text(html):
+def get_first_translate_text(html: str) -> str:
     translations = get_all_translates(html)
     return ''.join(translations[0])
 
