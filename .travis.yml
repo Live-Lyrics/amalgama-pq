@@ -9,6 +9,6 @@ install:
 
 script:
   - pipenv run pytest --cov=amalgama
-  - pipenv run mypy amalgama
+  - pipenv run mypy amalgama --ignore-missing-imports
 after_success:
   - codecov
