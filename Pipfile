@@ -9,6 +9,7 @@ codecov = "*"
 pytest-cov = "*"
 amalgama-pq = {path = ".", editable = true}
 mypy = "*"
+black = "*"
 
 [packages]
 pyquery = "*"
