@@ -1,4 +1,4 @@
-from typing import List, Callable, Iterable, Generator
+from typing import List, Callable, Iterable
 
 from pyquery import PyQuery as pq
 
