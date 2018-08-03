@@ -22,8 +22,16 @@ def update_html():
 with open("tests/tests_data/lyrics.html", "r", encoding="cp1251") as f:
     html = f.read()
 
-parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text]
+parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text,
+                   amalgama.get_all_original_lines]
 
 for f in parse_functions:
     with open(f"tests/tests_data/{f.__name__}.json", "w", encoding="utf-8") as outfile:
         json.dump(f(html), outfile, ensure_ascii=False)
+
+
+parse_originals = [amalgama.get_all_originals, amalgama.get_first_original_text]
+song = "Californication"
+for f in parse_originals:
+    with open(f"tests/tests_data/{f.__name__}.json", "w", encoding="utf-8") as outfile:
+        json.dump(f(html, song), outfile, ensure_ascii=False)

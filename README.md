@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/andriyor/amalgama-pq.svg?branch=master)](https://travis-ci.org/andriyor/amalgama-pq)
 [![codecov](https://codecov.io/gh/andriyor/amalgama-pq/branch/master/graph/badge.svg)](https://codecov.io/gh/andriyor/amalgama-pq)
 
-Amalgama lyrics Scraping
+Amalgama lyrics scraping
 
 ## Installation
 ```
@@ -23,7 +23,8 @@ $ python setup.py install
 
 ```
 import requests
-from amalgama import amalgama
+
+import amalgama
 
 artist, song = 'Pink Floyd', 'Time'
 url = amalgama.get_url(artist, song)

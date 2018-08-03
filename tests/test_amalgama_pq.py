@@ -24,10 +24,21 @@ def load_json(file_path):
         return json.load(f)
 
 
-parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text]
+parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text,
+                   amalgama.get_all_original_lines]
 params = {i.__name__: (i, load_json(f"tests/tests_data/{i.__name__}.json")) for i in parse_functions}
 
 
 @pytest.mark.parametrize("f, data", params.values(), ids=list(params.keys()))
-def test_pq(f, data, html):
+def test_pq_translate(f, data, html):
     assert f(html) == data
+
+
+parse_originals = [amalgama.get_all_originals, amalgama.get_first_original_text]
+params_originals = {i.__name__: (i, load_json(f"tests/tests_data/{i.__name__}.json")) for i in parse_originals}
+song = "Californication"
+
+
+@pytest.mark.parametrize("f, data", params_originals.values(), ids=list(params_originals.keys()))
+def test_pq_original(f, data, html):
+    assert f(html, song) == data
