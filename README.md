@@ -6,7 +6,7 @@ Amalgama lyrics scraping
 
 ## Installation
 ```
-$ pip nstall git+https://github.com/andriyor/amalgama-pq.git#egg=amalgama-pq
+$ pip install git+https://github.com/andriyor/amalgama-pq.git#egg=amalgama-pq
 ```
 
 ### Requirements

@@ -5,13 +5,14 @@ from pyquery import PyQuery as pq
 
 def build_url(s: str) -> str:
     s = s.lower()
-    s = s.replace(" ", "_")
+    chars_to_underscore = [" ", "-", "/", "'", "__"]
+    for char in chars_to_underscore:
+        s = s.replace(char, "_")
+
     s = s.replace("$", "s")
-    s = s.replace("/", "and")
     s = s.replace("&", "and")
+    s = s.replace("é", 'e')
     s = s.replace(".", "")
-    s = s.replace("'", "_")
-    s = s.replace("__", "_")
     return s
 
 
