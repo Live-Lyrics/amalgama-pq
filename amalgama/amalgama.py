@@ -18,7 +18,7 @@ def build_url(s: str) -> str:
 
 def get_url(artist: str, title: str) -> str:
     artist, title = map(build_url, [artist, title])
-    if "the" in artist:
+    if artist.startswith("the"):
         artist = artist[4:]
     amalgama_url = f"https://www.amalgama-lab.com/songs/{artist[0]}/{artist}/{title}.html"
     return amalgama_url

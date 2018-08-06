@@ -7,9 +7,10 @@ name = "pypi"
 pytest = "*"
 codecov = "*"
 pytest-cov = "*"
-amalgama-pq = {path = ".", editable = true}
 mypy = "*"
 black = "*"
+amalgama-pq = {editable = true, path = "."}
+chopper = {git = "https://github.com/andriyor/chopper.git"}
 
 [packages]
 pyquery = "*"
