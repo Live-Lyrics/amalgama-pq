@@ -9,10 +9,10 @@ codecov = "*"
 pytest-cov = "*"
 amalgama-pq = {path = ".", editable = true}
 mypy = "*"
-black = "*"
 
 [packages]
 pyquery = "*"
+black = "*"
 
 [requires]
 python_version = "3.7"
