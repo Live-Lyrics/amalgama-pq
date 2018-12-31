@@ -9,7 +9,6 @@ codecov = "*"
 pytest-cov = "*"
 amalgama-pq = {path = ".", editable = true}
 mypy = "*"
-black = "*"
 chopper = {git = "https://github.com/andriyor/chopper.git"}
 
 [packages]

@@ -3,12 +3,12 @@ python:
   - "3.6"
 
 # command to install dependencies
+before_install:
+  - pip install poetry
 install:
-  - pip install pipenv
-  - pipenv install --dev
-
+  - poetry install
 script:
-  - pipenv run pytest --cov=amalgama
-  - pipenv run mypy amalgama --ignore-missing-imports
+  - poetry run pytest --cov=amalgama
+  - poetry run mypy amalgama --ignore-missing-imports
 after_success:
   - codecov
