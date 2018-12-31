@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "amalgama"
-version = "0.1.1"
+version = "0.1.2"
 description = "amalgama scraper"
 authors = ["Andriy Orehov <andriyorehov@gmail.com>"]
 license = "MIT"
