@@ -6,5 +6,5 @@ setuptools.setup(
     author="andriyor",
     author_email="andriyorehov@gmail.com",
     description="amalgama scraper",
-    install_requires=['pyquery'],
+    install_requires=['pyquery', 'python-slugify'],
 )

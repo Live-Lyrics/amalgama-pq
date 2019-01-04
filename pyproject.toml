@@ -11,6 +11,7 @@ homepage = "https://github.com/andriyor/amalgama-pq"
 python = "^3.6"
 pyquery = "^1.4"
 python-slugify = "^2.0"
+unidecode = "^1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.0"
