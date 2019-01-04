@@ -1,26 +1,17 @@
 from typing import List, Callable, Iterable
 
 from pyquery import PyQuery as pq
-
-
-def build_url(s: str) -> str:
-    s = s.lower()
-    chars_to_underscore = [" ", "-", "/", "'", "__"]
-    for char in chars_to_underscore:
-        s = s.replace(char, "_")
-
-    s = s.replace("$", "s")
-    s = s.replace("&", "and")
-    s = s.replace("é", 'e')
-    s = s.replace(".", "")
-    return s
+from slugify import slugify
 
 
 def get_url(artist: str, title: str) -> str:
-    artist, title = map(build_url, [artist, title])
-    if artist.startswith("the"):
+    title = slugify(title, replacements=[["&", "and"]], separator="_")
+    if artist.lower().startswith("the"):
         artist = artist[4:]
-    amalgama_url = f"https://www.amalgama-lab.com/songs/{artist[0]}/{artist}/{title}.html"
+        artist = slugify(artist, replacements=[[".", "_"], ["$", "s"], ["+", "and"]], separator="_")
+    else:
+        artist = slugify(artist, replacements=[[".", ""], ["$", "s"], ["+", "and"]], separator="_")
+    amalgama_url = f"https://www.amalgama-lab.com/songs/{artist[0].lower()}/{artist}/{title}.html"
     return amalgama_url
 
 
@@ -95,14 +86,14 @@ def get_first_original_text(html: str, song: str) -> str:
 if __name__ == "__main__":
     import requests
 
-    artist, song = "Pink Floyd", "Time"
-    url = get_url(artist, song)
+    artist_name, song_name = "Pink Floyd", "Time"
+    url = get_url(artist_name, song_name)
     try:
         response = requests.get(url)
         response.raise_for_status()
-        lyrics = get_first_original_text(response.text, song)
+        lyrics = get_first_original_text(response.text, song_name)
         lyrics_translate = get_first_translate_text(response.text)
         print(lyrics)
         print(lyrics_translate)
     except requests.exceptions.HTTPError:
-        print(f"{artist}-{song} not found in amalgama {url}")
+        print(f"{artist_name}-{song_name} not found in amalgama {url}")

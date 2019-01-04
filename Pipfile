@@ -13,6 +13,7 @@ chopper = {git = "https://github.com/andriyor/chopper.git"}
 
 [packages]
 pyquery = "*"
+python-slugify = "*"
 
 [requires]
 python_version = "3.7"
