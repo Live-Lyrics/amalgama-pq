@@ -20,7 +20,7 @@ def test_get_html(html, result_html):
 
 
 def load_json(file_path):
-    with open(file_path, "rb") as f:
+    with open(file_path, "r") as f:
         return json.load(f)
 
 
