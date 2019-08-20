@@ -2,8 +2,8 @@
 [![image](https://img.shields.io/pypi/v/amalgama.svg)](https://pypi.org/project/amalgama/)
 [![image](https://img.shields.io/pypi/l/amalgama.svg)](https://pypi.org/project/amalgama/)
 [![image](https://img.shields.io/pypi/pyversions/amalgama.svg)](https://pypi.org/project/amalgama/)
-[![Build Status](https://travis-ci.org/andriyor/amalgama-pq.svg?branch=master)](https://travis-ci.org/andriyor/amalgama-pq)
-[![codecov](https://codecov.io/gh/andriyor/amalgama-pq/branch/master/graph/badge.svg)](https://codecov.io/gh/andriyor/amalgama-pq)
+[![Build Status](https://travis-ci.org/Live-Lyrics/amalgama-pq.svg?branch=master)](https://travis-ci.org/Live-Lyrics/amalgama-pq)
+[![codecov](https://codecov.io/gh/Live-Lyrics/amalgama-pq/branch/master/graph/badge.svg)](https://codecov.io/gh/Live-Lyrics/amalgama-pq)
 
 Amalgama lyrics scraping
 
