@@ -52,7 +52,7 @@ def get_all_original_lines(html: str) -> List[str]:
 
 
 def split_before(iterable: Iterable[str], pred: Callable[[str], bool]) -> Iterable[List[str]]:
-    buf: List[str] = []
+    buf = []
     for item in iterable:
         if pred(item) and buf:
             yield buf
