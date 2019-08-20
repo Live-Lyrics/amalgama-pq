@@ -26,7 +26,7 @@ def load_json(file_path):
 
 parse_functions = [amalgama.get_all_translates_lines, amalgama.get_all_translates, amalgama.get_first_translate_text,
                    amalgama.get_all_original_lines]
-params = {i.__name__: (i, load_json(f"tests/tests_data/{i.__name__}.json")) for i in parse_functions}
+params = {i.__name__: (i, load_json("tests/tests_data/{}.json".format(i.__name__))) for i in parse_functions}
 
 
 @pytest.mark.parametrize("f, data", params.values(), ids=list(params.keys()))
@@ -35,7 +35,7 @@ def test_pq_translate(f, data, html):
 
 
 parse_originals = [amalgama.get_all_originals, amalgama.get_first_original_text]
-params_originals = {i.__name__: (i, load_json(f"tests/tests_data/{i.__name__}.json")) for i in parse_originals}
+params_originals = {i.__name__: (i, load_json("tests/tests_data/{}.json".format(i.__name__))) for i in parse_originals}
 song = "Californication"
 
 
