@@ -11,7 +11,7 @@ def get_url(artist: str, title: str) -> str:
         artist = slugify(artist, replacements=[[".", "_"], ["$", "s"], ["+", "and"]], separator="_")
     else:
         artist = slugify(artist, replacements=[[".", ""], ["$", "s"], ["+", "and"]], separator="_")
-    amalgama_url = f"https://www.amalgama-lab.com/songs/{artist[0].lower()}/{artist}/{title}.html"
+    amalgama_url = "https://www.amalgama-lab.com/songs/{}/{}/{}.html".format(artist[0].lower(), artist, title)
     return amalgama_url
 
 
@@ -26,14 +26,14 @@ def get_html(html: str) -> str:
 
 def get_all_translates_lines(html: str) -> List[str]:
     d = pq(html)
-    lines = [f"{d('h2.translate').text()}\n\n"]
+    lines = ["{}\n\n".format(d('h2.translate').text())]
     for i in d("div.translate"):
         t = pq(i).text()
         if t:
             if t[0].isdigit():
                 lines.append(t)
             else:
-                lines.append(f"{t}\n")
+                lines.append("{}\n".format(t))
         else:
             lines.append("\n")
     return lines
@@ -41,11 +41,11 @@ def get_all_translates_lines(html: str) -> List[str]:
 
 def get_all_original_lines(html: str) -> List[str]:
     d = pq(html)
-    lines = [f"{d('h2.original').text()}\n\n"]
+    lines = ["{}\n\n".format(d('h2.original').text())]
     for i in d("div.original"):
         t = pq(i).text()
         if t:
-            lines.append(f"{t}\n")
+            lines.append("{}\n".format(t))
         else:
             lines.append("\n")
     return lines
@@ -96,4 +96,4 @@ if __name__ == "__main__":
         print(lyrics)
         print(lyrics_translate)
     except requests.exceptions.HTTPError:
-        print(f"{artist_name}-{song_name} not found in amalgama {url}")
+        print("{}-{} not found in amalgama {}".format(artist_name, song_name, url))

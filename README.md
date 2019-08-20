@@ -7,10 +7,13 @@
 
 Amalgama lyrics scraping
 
+### Requirements
+* Python 3.5 and up
+
 ## Installation
 from PyPI
 ```
-$ pip install 
+$ pip install amalgama
 ```
 
 from git repository
@@ -21,12 +24,9 @@ $ pip install git+https://github.com/andriyor/amalgama-pq.git#egg=amalgama-pq
 from source
 ```
 $ git clone https://github.com/andriyor/amalgama-pq.git
-$ cd amalgama
+$ cd amalgama-pq
 $ python setup.py install
 ```
-
-### Requirements
-* Python 3.6 and up
 
 ## Usage
 
@@ -66,17 +66,17 @@ Waiting for someone or something to show you the way
 ```
 
 ## Development setup
-Install [Pipenv](https://docs.pipenv.org/)   
-```
-$ pipenv install --dev -e .
-```
-or [Poetry](https://poetry.eustace.io/docs/)   
+Using [Poetry](https://poetry.eustace.io/docs/)   
 ```
 $ poetry install
 ```
 run tests
 ```
 $ poetry run pytest
+```
+or [Pipenv](https://docs.pipenv.org/)   
+```
+$ pipenv install --dev -e .
 ```
 
 ## License
